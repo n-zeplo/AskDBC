@@ -19,5 +19,5 @@ get '/callback' do
   puts '*' * 40
   p user_info = JSON.parse(response.body)
   #=> user_info is {"id"=>"108553686725590595849", "email"=>"nzeplowitz@gmail.com", "verified_email"=>true, "name"=>"Nathan Zeplowitz", "given_name"=>"Nathan", "family_name"=>"Zeplowitz", "link"=>"https://plus.google.com/108553686725590595849", "picture"=>"https://lh6.googleusercontent.com/-ljNCYRCxZ0g/AAAAAAAAAAI/AAAAAAAAAuk/r6hMRgwCzD0/photo.jpg", "gender"=>"male"}
-  puts "END"
+  redirect "/#{session[:current_user]}"
 end
