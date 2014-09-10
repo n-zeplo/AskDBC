@@ -19,11 +19,9 @@ gem 'rake'
 gem 'shotgun'
 gem 'faker'
 
-
 gem 'dotenv'
 
-gem 'bcrypt'
-gem 'bcrypt-ruby'
+gem "oauth2"
 
 group :test do
   gem 'shoulda-matchers'
