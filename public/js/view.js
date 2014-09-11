@@ -27,25 +27,25 @@ var View = {
   updateQuestions: function(questions){
     for(var i = 0;i<questions.length;i++){
       if (questions[i].status === 'unanswered'){
-        $('#unanswered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'<a><br>');
+        $('#unanswered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
       }else if (questions[i].status === 'answered'){
-        $('#answered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'<a><br>');
+        $('#answered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
       } else if (questions[i].status === 'active'){
-        $('#unanswered').append('<p style="background-color:red">'+questions[i].question.substring(0, 50)+'<p>');
+
+        $('#unanswered').append('<a href="#" class="edit" style="background-color:red;font-weight:bold;">'+questions[i].question.substring(0, 50)+'</a><br>');
       }
     };
   },
 
   getQuestion: function(question, questions){
     for(var i = 0; i<questions.length;i++){
-      if (question === questions[i].question){
+      if (question.substring(0, 50) === questions[i].question.substring(0, 50)){
         return questions[i];
       }
     }
   },
 
   showEditQuestion: function(question, form_info){
-    console.log(form_info)
     $("#"+ form_info + "_question_form input[name='question[question]']").val(question.question);
     $("#"+ form_info + "_question_form input[name='question[challenge_name]']").val(question.challenge_name);
     $("#"+ form_info + "_question_form input[name='question[error_msg]']").val(question.error_msg);
@@ -74,7 +74,6 @@ var View = {
     question.error_msg = $("#edit_question_form input[name='question[error_msg]']").val();
     question.code = $("#edit_question_form textarea[name='question[code]']").val();
     question.location = $("#edit_question_form input[name='question[location]']").val();
-    console.log(question);
     View.clearModal();
     $.ajax({
       url: '/questions',
