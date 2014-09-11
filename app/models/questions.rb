@@ -4,6 +4,6 @@ class Question < ActiveRecord::Base
   has_many :active_questions
 
   def defaults
-    self.status = 'unanswered'
+    self.status ||= 'unanswered'
   end
 end
