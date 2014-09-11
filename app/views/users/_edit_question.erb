@@ -2,8 +2,8 @@
 
     <h2>Please Fill Out As Much Info As You Can</h2>
     <br>
-    <form class="post_question">
-      <input type="text" name='question[question]' placeholder="Question" required><br><br>
+    <form class="edit_question">
+      <input type="text" name='question[question]' placeholder="Question" disabled><br><br>
       <input type="text" name='question[challenge_name]' placeholder="Challenge Name"><br><br>
       <input type="text" name='question[error_msg]' placeholder="Error Message"><br><br>
       <textarea type="text" name='question[description]' placeholder="description"></textarea><br><br>
@@ -11,9 +11,8 @@
       <input type="text" name='question[location]' placeholder="Meetup Location/Personal Description"><br><br>
 
 
-      <input type="submit" value="Edit Question" style="padding:.5em; float:left; width:20%">
-      <input type="submit" value="Delete Question"
-      style="padding:.5em; float:right; width:20%">
+      <button type="submit" name='push_edit' style="padding:.5em; float:left; width:30%;">Edit Question</button>
+      <button type="submit" name='delete' style="padding:.5em; float:right; width:30%">Delete Question</button>
     </form>
 
 </div>

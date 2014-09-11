@@ -4,7 +4,12 @@
 
     <% if session[:current_user] %>
       <a href='/signout'>Sign Out</a>
-      <a href="/users/<%= session[:current_user] %>"> Profile</a>
+      <a href="/users/<%= session[:current_user] %>">
+      <% if @user.picture %>
+        <img id='profile_img' src='<%= @user.picture %>'></a>
+      <% else %>
+        Profile</a>
+      <% end %>
     <% else %>
       <button><a href='/auth'>Log In With Google</a></button>
     <% end %>
