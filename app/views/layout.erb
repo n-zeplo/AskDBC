@@ -7,18 +7,28 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/normalize.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   <!--
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+
+  <script src="/js/initialize.js"></script>
+  <script src="/js/controller.js"></script>
+  <script src="/js/view.js"></script>
+  <script src="/js/model.js"></script>
 
   <title></title>
 </head>
 <body>
+  <div class="block_screen">
+  </div>
   <%= erb :'_header' %>
-  <%= yield %>
+
+  <div class="main">
+    <%= yield %>
+  </div>
 </body>
 </html>
