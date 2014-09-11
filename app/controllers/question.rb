@@ -1,5 +1,9 @@
 get '/questions/index' do
-  json questions: @user.questions
+  if @user.access == 'student'
+    json questions: @user.questions
+  elsif @user.access == 'coach'
+    json questions: Question.all
+  end
 end
 
 post '/questions' do
