@@ -1,5 +1,4 @@
 get '/users/:id' do
-  @user = User.find(session[:current_user])
   if @user.access == 'student'
     erb :'/users/student_index'
   elsif @user.access == 'coach'
