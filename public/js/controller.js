@@ -30,7 +30,7 @@ function Controller (view){
     } else if (($(this).attr('name') === 'push_edit')){
       view.editQuestion(question);
     } else if (($(this).attr('name') === 'activate')){
-
+      view.activateQuestion(question);
     }
   });
 
