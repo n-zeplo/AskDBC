@@ -81,4 +81,16 @@ var View = {
       data: {question: question}
     })
   },
+
+  activateQuestion: function(question){
+    $("#"+ question.status +" a:contains("+question.question +")").remove();
+    question.status = 'active';
+    View.updateQuestions([question]);
+    View.clearModal();
+    $.ajax({
+      url: '/questions',
+      method: "PUT",
+      data: {question: question}
+    })
+  }
 }
