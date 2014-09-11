@@ -12,6 +12,10 @@ post '/questions' do
   json question: @user.questions.last
 end
 
-delete '/questions/:id' do
+delete '/questions' do
+  Question.find(params['question']['id']).destroy();
+end
 
+put '/questions' do
+  Question.find(params['question']['id']).update(params['question'])
 end
