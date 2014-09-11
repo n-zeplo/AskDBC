@@ -1,5 +1,6 @@
 get '/questions/index' do
-  if @user.access == 'student'
+  return if @user.nil?
+  if @user.access == 'student' || @user.access == 'admin' #TODO => MAKE ADMIN PAGE
     json questions: @user.questions
   elsif @user.access == 'coach'
     json questions: Question.all
