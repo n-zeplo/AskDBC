@@ -1,5 +1,5 @@
 #Create Admin For the Site
-User.create(email:'nzeplowitz@gmail.com', name: 'admin', access: 'admin')
+User.create(email:'nzeplowitz@gmail.com', name: 'Nathan Zeplowitz', access: 'admin')
 
 #Create 5 Students
 5.times do
