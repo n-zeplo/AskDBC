@@ -43,7 +43,7 @@ th {
   margin-top: 5%;
   letter-spacing: .125em;
 }
-.header button{
+.header #login_button{
   float: right;
   text-decoration: none;
   margin-top: 4%;
