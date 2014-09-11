@@ -20,7 +20,9 @@ get '/callback' do
   p response.inspect
   puts access_token.inspect
   puts user_info
-  @user = User.find_or_create_by(email: user_info["email"], name: user_info["name"], picture: user_info["picture"]  )
+  @user = User.find_or_create_by(name: user_info["name"])
+  @user.update(email: user_info["email"], picture: user_info["picture"])
+
   session[:current_user] = @user.id
 
   redirect "/users/#{session[:current_user]}"
