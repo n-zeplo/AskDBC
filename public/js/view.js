@@ -56,18 +56,6 @@ var View = {
     $('.block_screen').show();
   },
 
-  showCoachQuestion: function(question){
-    console.log(question);
-    $("#answer_question_form input[name='question[question]']").val(question.question);
-    $("#answer_question_form input[name='question[challenge_name]']").val(question.challenge_name);
-    $("#answer_question_form input[name='question[error_msg]']").val(question.error_msg);
-    $("#answer_question_form textarea[name='question[description]']").val(question.description);
-    $("#answer_question_form textarea[name='question[code]']").val(question.code);
-    $("#answer_question_form input[name='question[location]']").val(question.location);
-    $('#answer_question_form').show();
-    $('.block_screen').show();
-  },
-
   deleteQuestion: function(question){
     $("#"+ question.status +" a:contains("+question.question +")").remove();
     $.ajax({
