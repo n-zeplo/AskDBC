@@ -1,7 +1,3 @@
-SCOPES = [
-    'https://www.googleapis.com/auth/userinfo.email'
-].join(' ')
-
 raise RuntimeError, "You must set CLIENT_ID and CLIENT_SECRET in your server environment." unless ENV['CLIENT_ID'] && ENV['CLIENT_SECRET']
 
 CLIENT_ID = ENV['CLIENT_ID']
