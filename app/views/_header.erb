@@ -1,0 +1,17 @@
+<div class='header'>
+
+    <h1>Ask DBC</h1>
+
+    <% if session[:current_user] %>
+      <a href='/signout'>Sign Out</a>
+      <a href="/users/<%= session[:current_user] %>">
+      <% if @user.picture %>
+        <img id='profile_img' src='<%= @user.picture %>'></a>
+      <% else %>
+        Profile</a>
+      <% end %>
+    <% else %>
+      <a id="login_button" href='/auth'>Log In With Google</a>
+    <% end %>
+
+</div>
