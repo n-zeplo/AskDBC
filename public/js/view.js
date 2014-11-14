@@ -1,4 +1,5 @@
 var View = {
+  //Clear Modal from Page
   clearModal: function(){
     $('#question_form').hide();
     $('#edit_question_form').hide();
@@ -6,35 +7,24 @@ var View = {
     $('.block_screen').hide();
 
   },
-
-  postQuestion: function(instance, user_questions){
-    var question = $(instance).serialize();
-    $.ajax({
-      url: '/questions',
-      method: 'POST',
-      data: question,
-      dataType: 'json'
-      })
-    .done(function(data){
+  //Posts new question by clearing modal and updating question list
+  postQuestion: function(questions){
       View.clearModal();
-      $(instance)[0].reset();
-      var question = [data['question']];
-      View.updateQuestions(question);
-      user_questions.push(question[0])
-    });
+      View.updateQuestions(questions);
   },
-
+  //Updates both of the question lists with most recent question objects
   updateQuestions: function(questions){
+    $('#unanswered_questions').empty();
+    $('#answered_questions').empty();
     for(var i = 0;i<questions.length;i++){
       if (questions[i].status === 'unanswered'){
-        $('#unanswered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
+        $('#unanswered_questions').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
       }else if (questions[i].status === 'answered'){
-        $('#answered').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
+        $('#answered_questions').append('<a href="#" class="edit">'+questions[i].question.substring(0, 50)+'</a><br>');
       } else if (questions[i].status === 'active'){
-
-        $('#unanswered').append('<a href="#" class="edit" style="background-color:red;font-weight:bold;">'+questions[i].question.substring(0, 50)+'</a><br>');
+        $('#unanswered_questions').append('<a href="#" class="edit" style="background-color:red;font-weight:bold;">'+questions[i].question.substring(0, 50)+'</a><br>');
       }
-    };
+    }
   },
 
   getQuestion: function(question, questions){
@@ -44,7 +34,7 @@ var View = {
       }
     }
   },
-
+  //Adds information to form so that the question can be edited.
   showEditQuestion: function(question, form_info){
     $("#"+ form_info + "_question_form input[name='question[question]']").val(question.question);
     $("#"+ form_info + "_question_form input[name='question[challenge_name]']").val(question.challenge_name);
@@ -55,18 +45,7 @@ var View = {
     $("#"+ form_info + "_question_form").show();
     $('.block_screen').show();
   },
-
-  deleteQuestion: function(question){
-    $("#"+ question.status +" a:contains("+question.question +")").remove();
-    $.ajax({
-      url: '/questions',
-      method: 'DELETE',
-      data: {question: question},
-    }).done(function(){
-      View.clearModal();
-    });
-  },
-
+  //Edits the question using the form and jquery
   editQuestion: function(question){
     question.question = $("#edit_question_form input[name='question[question]']").val();
     question.challenge_name = $("#edit_question_form input[name='question[challenge_name]']").val();
@@ -75,22 +54,12 @@ var View = {
     question.code = $("#edit_question_form textarea[name='question[code]']").val();
     question.location = $("#edit_question_form input[name='question[location]']").val();
     View.clearModal();
-    $.ajax({
-      url: '/questions',
-      method: "PUT",
-      data: {question: question}
-    })
   },
-
+  //Activates question when the coach picks it
   activateQuestion: function(question){
     $("#"+ question.status +" a:contains("+question.question +")").remove();
     question.status = 'active';
     View.updateQuestions([question]);
     View.clearModal();
-    $.ajax({
-      url: '/questions',
-      method: "PUT",
-      data: {question: question}
-    })
   }
-}
+};

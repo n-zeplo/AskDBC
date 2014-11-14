@@ -17,9 +17,6 @@ get '/callback' do
   response = access_token.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json')
 
   user_info = JSON.parse(response.body)
-  p response.inspect
-  puts access_token.inspect
-  puts user_info
   @user = User.find_or_create_by(name: user_info["name"])
   @user.update(email: user_info["email"], picture: user_info["picture"])
 
