@@ -8,7 +8,7 @@ get '/questions/index' do
 end
 
 post '/questions' do
-  @user.questions << Question.create(params['question'])
+  @user.questions << Question.create(params['questionData'])
 
   json question: @user.questions.last
 end

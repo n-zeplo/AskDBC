@@ -53,11 +53,11 @@ function Controller(view){
   $('form.post_question').submit( function(e){
     e.preventDefault();
     var instance = this;
-    var question = $(instance).serialize();
+    var questionData = $(instance).serialize();
     $.ajax({
       url: '/questions',
       method: 'POST',
-      data: question,
+      data: questionData, //params[:question]
       dataType: 'json'
       })
     .done(function(data){
