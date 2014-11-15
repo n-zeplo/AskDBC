@@ -7,7 +7,7 @@ function Controller(view){
   $.ajax({
     url: '/questions/index',
     method: 'GET',
-    dataType: 'json'
+    dataType: 'json',
   }).done(function(data){
     user_questions = data['questions'];
     view.updateQuestions(user_questions);
@@ -96,16 +96,4 @@ function Controller(view){
     }
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
