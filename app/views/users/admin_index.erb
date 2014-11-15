@@ -1,0 +1,21 @@
+<div class="pos">
+  <% @users.each do |user| %>
+  <div class="container">
+    <div id='coaches'>
+      <h1>Coaches</h1>
+      <div id='coaches'>
+      <% if user.access === 'coach' %>
+        <%= "<a href='#' class='toggle_access'>#{user.name}</a><br>" %>
+      <% end %>
+      </div>
+    </div>
+    <div id='students'>
+      <h1>Students</h1>
+      <div id='students_names'>
+      <% if user.access === 'student' %>
+        <%= "<a href='#' class='toggle_access'>#{user.name}</a><br>" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
