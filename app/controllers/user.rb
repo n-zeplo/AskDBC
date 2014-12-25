@@ -4,7 +4,8 @@ get '/users/:id' do
   elsif @user.access == 'coach'
     erb :'/users/coach_index'
   elsif @user.access == 'admin'
-    @users = Users.all
+    @users = User.all
+
     erb :'/users/admin_index'
   end
 end
